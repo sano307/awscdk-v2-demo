@@ -1,14 +1,19 @@
-import * as sns from '@aws-cdk/aws-sns';
-import * as subs from '@aws-cdk/aws-sns-subscriptions';
-import * as sqs from '@aws-cdk/aws-sqs';
-import * as cdk from '@aws-cdk/core';
+import {
+  App,
+  Duration,
+  Stack,
+  StackProps,
+  aws_sqs as sqs,
+  aws_sns as sns,
+  aws_sns_subscriptions as subs
+} from 'aws-cdk-lib';
 
-export class AwscdkV2DemoStack extends cdk.Stack {
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+export class AwscdkV2DemoStack extends Stack {
+  constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props);
 
     const queue = new sqs.Queue(this, 'AwscdkV2DemoQueue', {
-      visibilityTimeout: cdk.Duration.seconds(300)
+      visibilityTimeout: Duration.seconds(300)
     });
 
     const topic = new sns.Topic(this, 'AwscdkV2DemoTopic');

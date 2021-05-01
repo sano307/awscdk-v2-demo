@@ -1,9 +1,9 @@
 import { expect as expectCDK, haveResource } from '@aws-cdk/assert';
-import * as cdk from '@aws-cdk/core';
+import { App } from 'aws-cdk-lib';
 import * as AwscdkV2Demo from '../lib/awscdk-v2-demo-stack';
 
 test('SQS Queue Created', () => {
-    const app = new cdk.App();
+    const app = new App();
     // WHEN
     const stack = new AwscdkV2Demo.AwscdkV2DemoStack(app, 'MyTestStack');
     // THEN
@@ -13,7 +13,7 @@ test('SQS Queue Created', () => {
 });
 
 test('SNS Topic Created', () => {
-  const app = new cdk.App();
+  const app = new App();
   // WHEN
   const stack = new AwscdkV2Demo.AwscdkV2DemoStack(app, 'MyTestStack');
   // THEN
